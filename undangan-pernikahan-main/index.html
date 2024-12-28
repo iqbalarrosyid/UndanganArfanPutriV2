@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"
+    />
+    <title>Arfan & Putri | Undangan Pernikahan</title>
+    <link rel="stylesheet" href="css/aos.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="css/owl.theme.default.min.css" />
+
+    <style>
+      .map-responsive {
+        overflow: hidden;
+        padding-bottom: 56.25%;
+        position: relative;
+        height: 0;
+      }
+
+      .map-responsive iframe {
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- lagu start -->
+    <audio loop id="lagu">
+      <source src="audio/audio.mp3" type="audio/mp3" />
+    </audio>
+    <!-- lagu end -->
+    <!-- popup start -->
+    <div class="d-none">
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+        id="klikmodal"
+      >
+        Launch demo modal
+      </button>
+    </div>
+    <div
+      class="modal fade"
+      id="exampleModal"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+          <div class="modal-body bg-wakwak p-0">
+            <div
+              class="row justify-content-center mt-0 text-center h-100"
+              id="front-image-container"
+            >
+              <div class="col-md-6 col-12" id="front-image">
+                <img src="img/img3.jpg" alt="" />
+              </div>
+              <div class="flex col-md-6 col-12 mt-auto mb-auto" id="front-text">
+                <p><small>The Wedding of</small></p>
+                <h1 class="font-dancing fs-60">
+                  Arfan Ar-Rasyid <br />&<br />
+                  Putri Ayu Lestari
+                </h1>
+                <small class="mt-3">Sabtu, 05 April 2025</small>
+                <hr class="border-secondary w-50 mx-auto" />
+                <p class="mb-1">Kepada Bapak/Ibu/Saudara/i</p>
+                <p class="mb-2 mt-2">
+                  <span class="fw-semibold h4" id="nama"></span>
+                </p>
+                <p class="mb-2">di Tempat</p>
+                <button
+                  type="button"
+                  class="btn bg-berem btn-outline-secondary text-white rounded-4"
+                  data-bs-dismiss="modal"
+                  onclick="playAudio()"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-envelope-heart-fill mb-1"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555l-4.2 2.568a2.785 2.785 0 0 0-.051-.105c-.666-1.3-2.363-1.917-3.699-1.25-1.336-.667-3.033-.05-3.699 1.25l-.05.105L.05 3.555ZM11.584 8.91a4.694 4.694 0 0 1-.073.139L16 11.8V4.697l-4.003 2.447c.027.562-.107 1.163-.413 1.767Zm-4.135 3.05c-1.048-.693-1.84-1.39-2.398-2.082L.19 12.856A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144L10.95 9.878c-.559.692-1.35 1.389-2.398 2.081L8 12.324l-.551-.365ZM4.416 8.91c-.306-.603-.44-1.204-.413-1.766L0 4.697v7.104l4.49-2.752a4.742 4.742 0 0 1-.074-.138Z"
+                    />
+                    <path
+                      d="M8 5.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z"
+                    />
+                  </svg>
+                  Buka Undangan
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- popup end -->
+    <!-- header start -->
+    <header class="bg-wakwak position-relative">
+      <div
+        class="d-flex justify-content-center align-items-center vh-100 position-relative"
+        style="
+          background-image: url(img/gold.jpg);
+          background-size: cover;
+          background-position: center;
+        "
+      >
+        <!-- Layer Transparan -->
+        <div class="overlay position-absolute top-0 start-0 w-100 h-100"></div>
+
+        <!-- Konten Utama -->
+        <div class="container position-relative text-white">
+          <div class="row text-center">
+            <div class="col-12 mt-5">
+              The Wedding of
+              <h1 class="font-dancing fs-60">Arfan & Putri Ayu Lestari</h1>
+              <p>Sabtu, 05 April 2025</p>
+            </div>
+            <div class="col-12">
+              <div class="row justify-content-center">
+                <div class="col-md-8">
+                  <div class="row mb-3">
+                    <div class="col-3 m-0 p-1">
+                      <div
+                        class="card p-2 my-auto rounded-4 bg-berem text-white"
+                      >
+                        <p class="p-0 m-0" id="hari"></p>
+                        Hari
+                      </div>
+                    </div>
+                    <div class="col-3 m-0 p-1">
+                      <div
+                        class="card p-2 my-auto rounded-4 bg-berem text-white"
+                      >
+                        <p class="p-0 m-0" id="jam"></p>
+                        Jam
+                      </div>
+                    </div>
+                    <div class="col-3 m-0 p-1">
+                      <div
+                        class="card p-2 my-auto rounded-4 bg-berem text-white"
+                      >
+                        <p class="p-0 m-0" id="menit"></p>
+                        Menit
+                      </div>
+                    </div>
+                    <div class="col-3 m-0 p-1">
+                      <div
+                        class="card p-2 my-auto rounded-4 bg-berem text-white"
+                      >
+                        <p class="p-0 m-0" id="detik"></p>
+                        Detik
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- header end -->
+    <!-- ayat start -->
+    <section class="bg-wakwak">
+      <div class="container py-5">
+        <div
+          class="row text-center fw-bold justify-content-center"
+          data-aos="zoom-in"
+          data-aos-duration="1300"
+        >
+          <div class="col-lg-9 col-md-11 col-12">
+            <p class="fw-light">
+              "Dan diantara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan
+              pasangan-pasangan untukmu dari jenismu sendiri, agar kamu
+              cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di
+              antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu
+              benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang
+              berpikir "
+            </p>
+            <p>- QS. Ar-Rum 21 -</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ayat end -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path
+        fill="#86613c"
+        fill-opacity="1"
+        d="M0,192L40,186.7C80,181,160,171,240,149.3C320,128,400,96,480,101.3C560,107,640,149,720,144C800,139,880,85,960,90.7C1040,96,1120,160,1200,181.3C1280,203,1360,181,1400,170.7L1440,160L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"
+      ></path>
+    </svg>
+    <!-- calon start -->
+    <section class="bg-wakwak">
+      <div class="container py-5">
+        <div class="row text-center justify-content-center">
+          <div class="col-12 mb-5" data-aos="zoom-in" data-aos-duration="1300">
+            <img src="img/bismillah.png" alt="" width="200px" class="mb-3" />
+            <h5 class="mb-3">Assalamualaikum Wr. Wb.</h5>
+            <p class="m-0 p-0">Tanpa mengurangi rasa hormat</p>
+            <p class="m-0 p-0">
+              Kami mengundang Bapak/Ibu/Saudara/i serta kerabat sekalian untuk
+              menghadiri acara pernikahan kami
+            </p>
+          </div>
+          <div
+            class="col-md-5 col-12 my-md-4 my-3"
+            data-aos="zoom-in"
+            data-aos-duration="1300"
+            data-aos-delay="1100"
+          >
+            <!-- <img
+              src="img/img9.jpg"
+              class="rounded-circle shadow-lg border-white mb-3"
+              alt=""
+              width="200px"
+            /> -->
+            <h1 class="font-dancing fs-45">Arfan Ar-Rasyid</h1>
+            <p class="m-0 p-0">Putra Pertama</p>
+            <p class="m-0 p-0">Bapak Sadji & Ibu Suyantiningsih</p>
+          </div>
+          <div
+            class="col-md-2 col-12 m-md-auto my-5"
+            data-aos="zoom-in"
+            data-aos-duration="1300"
+            data-aos-delay="600"
+          >
+            <h1 class="m-0 p-0 font-dancing">&</h1>
+          </div>
+          <div
+            class="col-md-5 col-12 my-md-4 my-3"
+            data-aos="zoom-in"
+            data-aos-duration="1300"
+            data-aos-delay="500"
+          >
+            <!-- <img
+              src="img/img8.jpg"
+              class="rounded-circle shadow-lg border-white mb-3"
+              alt=""
+              width="200px"
+            /> -->
+            <h1 class="font-dancing fs-45">Putri Ayu Lestari</h1>
+            <p class="m-0 p-0">Putri Kelima</p>
+            <p class="m-0 p-0">
+              Bapak Susanto, S.Pd. & Ibu Eni Ruminingsih, S.Pd.SD
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- calon end -->
+    <!-- akad start -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path
+        fill="#8f7051"
+        fill-opacity="1"
+        d="M0,160L48,176C96,192,192,224,288,208C384,192,480,128,576,133.3C672,139,768,213,864,213.3C960,213,1056,139,1152,128C1248,117,1344,171,1392,197.3L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+      ></path>
+    </svg>
+    <section class="bg-berem" id="date">
+      <div class="container py-5">
+        <div class="row text-center justify-content-center">
+          <div class="col-12 mb-5" data-aos="zoom-in" data-aos-duration="1300">
+            <h1 class="font-dancing fs-40 text-white">Save The Date</h1>
+          </div>
+          <div
+            class="col-md-6 col-12 py-3"
+            data-aos="zoom-in"
+            data-aos-duration="1300"
+            data-aos-delay="500"
+          >
+            <div class="card p-3 shadow bg-fee">
+              <h1 class="font-dancing mb-3 fs-40">Akad Nikah</h1>
+              <p class="fw-bold p-0 m-0">Sabtu, 05 April 2025</p>
+              <p class="m-0 p-0">Pukul 09.00 WIB</p>
+              <p class="m-0 p-0">
+                Kec. Cicurug, Kab. Sukabumi, Jawa Barat, Indonesia
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-md-6 col-12 py-3"
+            data-aos="zoom-in"
+            data-aos-duration="1300"
+            data-aos-delay="750"
+          >
+            <div class="card p-3 shadow bg-fee">
+              <h1 class="font-dancing mb-3 fs-40">Resepsi</h1>
+              <p class="fw-bold p-0 m-0">Sabtu, 05 April 2025</p>
+              <p class="m-0 p-0">Pukul 10.00 WIB s.d. Selesai</p>
+              <p class="m-0 p-0">
+                Kec. Cicurug, Kab. Sukabumi, Jawa Barat, Indonesia
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-12 py-3"
+            data-aos="zoom-in"
+            data-aos-duration="1300"
+            data-aos-delay="1000"
+          >
+            <h1 class="font-dancing mb-3 fs-40 text-white">Lokasi</h1>
+            <p class="text-white">
+              Gedung Serbaguna (Samping Cicatih Waterpark), Desa Bangbayang,
+              Kec. Cicurug, Kabupaten Sukabumi, Jawa Barat 43359
+            </p>
+            <a
+              href="https://maps.app.goo.gl/MEwpAkjVkjCJd1aY7"
+              target="_blank"
+              class="text-decoration-none btn btn-light btn-outline-secondary mb-5 mt-3 rounded-4"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-geo-alt-fill mb-1"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"
+                />
+              </svg>
+              Buka Google Map</a
+            >
+
+            <div class="map-responsive">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126732.49100350747!2d110.0092346!3d-6.9631952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7041e3171f5645%3A0x767fd7b3930849c2!2sDjitek%20Jog!5e0!3m2!1sid!2sid!4v1735360101952!5m2!1sid!2sid"
+                width="600"
+                height="450"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path
+        fill="#8f7051"
+        fill-opacity="1"
+        d="M0,160L48,176C96,192,192,224,288,208C384,192,480,128,576,133.3C672,139,768,213,864,213.3C960,213,1056,139,1152,128C1248,117,1344,171,1392,197.3L1440,224L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+      ></path>
+    </svg>
+    <!-- akad end -->
+
+    <!-- Ucapan start -->
+    <section class="bg-wakwak">
+      <div class="container py-5">
+        <div class="row text-center justify-content-center">
+          <div
+            class="col-12 mb-5"
+            data-aos="zoom-in"
+            data-aos-duration="1300"
+            data-aos-delay="2250"
+          >
+            <h1 class="font-dancing fs-40">Wishes</h1>
+            <p class="p-0 m-0">Doa Restu Anda merupakan karunia</p>
+            <p class="p-0 m-0">yang sangat berarti bagi kami.</p>
+          </div>
+          <!-- <div
+            class="col-md-10 col-12 mx-2"
+            data-aos="zoom-in"
+            data-aos-duration="1300"
+            data-aos-delay="2500"
+          >
+            <div class="card bg-fee rounded-3 p-3">
+              <form id="wishesForm">
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    id="nama"
+                    name="nama"
+                    placeholder="Nama"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <textarea
+                    id="ucapan"
+                    placeholder="Ucapan"
+                    rows="4"
+                    class="form-control"
+                    required
+                  ></textarea>
+                </div>
+                <div class="mb-3">
+                  <select id="konfirmasi" class="form-select" required>
+                    <option disabled selected>Konfirmasi Kehadiran</option>
+                    <option value="Hadir">Hadir</option>
+                    <option value="Tidak Hadir">Tidak Hadir</option>
+                  </select>
+                </div>
+                <div class="mb-3 text-start">
+                  <button
+                    type="submit"
+                    class="btn bg-berem btn-outline-secondary text-white"
+                  >
+                    Kirim
+                  </button>
+                </div>
+              </form>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ucapan end -->
+    <!-- salam start -->
+    <section class="bg-wakwak">
+      <div class="container py-5">
+        <div class="row text-center justify-content-center">
+          <div class="col-lg-9 col-md-11 col-12">
+            <div
+              data-aos="zoom-in"
+              data-aos-duration="1300"
+              data-aos-delay="1000"
+            >
+              <!-- <img
+                src="img/img10.jpg"
+                class="rounded-circle shadow-lg border-white mb-3"
+                alt=""
+                width="200px"
+              /> -->
+              <p class="m-0 p-0 mb-3">
+                Merupakan suatu kehormatan dan kebahagiaan bagi kami, apabila
+                Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.
+                Atas kehadiran dan doa restunya, kami mengucapkan terima kasih.
+              </p>
+              <h5 class="mb-5">Wassalamualaikum Wr. Wb.</h5>
+            </div>
+            <div
+              data-aos="zoom-in"
+              data-aos-duration="1300"
+              data-aos-delay="1250"
+            >
+              <h1 class="font-dancing fs-60">Arfan Ar-Rasyid</h1>
+              <h1 class="font-dancing fs-60">&</h1>
+              <h1 class="font-dancing fs-60">Putri Ayu Lestari</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- salam end -->
+    <svg
+      id="wave"
+      class="bg-wakwak"
+      viewBox="0 0 1440 240"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fill="#86613c"
+        d="M0,144L60,128C120,112,240,80,360,88C480,96,600,144,720,140C840,136,960,80,1080,72C1200,64,1320,104,1440,120C1560,136,1680,128,1800,108C1920,88,2040,56,2160,64C2280,72,2400,120,2520,148C2640,176,2760,184,2880,184C3000,184,3120,176,3240,156C3360,136,3480,104,3600,96C3720,88,3840,104,3960,124C4080,144,4200,168,4320,148C4440,128,4560,64,4680,56C4800,48,4920,96,5040,108C5160,120,5280,96,5400,72C5520,48,5640,24,5760,40C5880,56,6000,112,6120,148C6240,184,6360,200,6480,172C6600,144,6720,72,6840,44C6960,16,7080,32,7200,48C7320,64,7440,80,7560,80C7680,80,7800,64,7920,76C8040,88,8160,128,8280,124C8400,120,8520,72,8580,48L8640,24L8640,240L8580,240C8520,240,8400,240,8280,240C8160,240,8040,240,7920,240C7800,240,7680,240,7560,240C7440,240,7320,240,7200,240C7080,240,6960,240,6840,240C6720,240,6600,240,6480,240C6360,240,6240,240,6120,240C6000,240,5880,240,5760,240C5640,240,5520,240,5400,240C5280,240,5160,240,5040,240C4920,240,4800,240,4680,240C4560,240,4440,240,4320,240C4200,240,4080,240,3960,240C3840,240,3720,240,3600,240C3480,240,3360,240,3240,240C3120,240,3000,240,2880,240C2760,240,2640,240,2520,240C2400,240,2280,240,2160,240C2040,240,1920,240,1800,240C1680,240,1560,240,1440,240C1320,240,1200,240,1080,240C960,240,840,240,720,240C600,240,480,240,360,240C240,240,120,240,60,240L0,240Z"
+      ></path>
+    </svg>
+    <!-- footer start -->
+    <!-- <footer class="bg-kulit">
+      <div class="container pb-5">
+        <div class="row text-center">
+          <div class="col-12">
+            <small class="p-0 m-0">
+              Original Design by
+              <a target="_blank" href="https://github.com/aldiui"
+                >Aldi Jaya Mulyana</a
+              >
+              | 2022
+            </small>
+          </div>
+        </div>
+      </div>
+    </footer> -->
+    <!-- footer end -->
+    <!-- button audio -->
+    <div class="text-end fixed-bottom me-3 mb-3">
+      <div class="btn-group">
+        <button
+          type="button"
+          class="btn btn-sm bg-berem btn-outline-secondary"
+          onclick="stopAudio()"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-stop-fill text-white"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M5 3.5h6A1.5 1.5 0 0 1 12.5 5v6a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 11V5A1.5 1.5 0 0 1 5 3.5z"
+            />
+          </svg>
+        </button>
+        <button
+          type="button"
+          class="btn btn-sm bg-berem btn-outline-secondary"
+          onclick="playAudio()"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-play-fill text-light"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- button audio -->
+    <script src="js/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script>
+      AOS.init({
+        once: true,
+      });
+    </script>
+  </body>
+</html>
