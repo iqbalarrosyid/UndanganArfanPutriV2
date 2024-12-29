@@ -19,8 +19,11 @@ body {
   /* color: #daa520d0; */
 }
 
-p,
 h5 {
+  color: #daa520d0;
+}
+
+.tg {
   color: #daa520d0;
 }
 
@@ -34,7 +37,7 @@ h5 {
 }
 
 .bg-berem {
-  background-color: #8f7051;
+  background-color: #83610a;
 }
 
 .text-berem {
@@ -105,5 +108,5 @@ h5 {
 }
 
 bg {
-  color: #86613c;
+  color: #83610a6e;
 }
