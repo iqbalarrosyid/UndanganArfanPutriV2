@@ -1,34 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,300;1,400&family=Dancing+Script:wght@400;600;700&family=Playball&display=swap");
 
 body {
-  background-color: #000000;
+  background-color: #ffffff;
 }
 
 .font-dancing {
   font-family: "Dancing Script", cursive;
-  color: #daa520d0;
 }
 
 .font-playball {
-  font-family: "Playball", cursive;
-  color: #daa520d0;
+  font-family: "Futura", Sans-serif;
 }
 
-* {
-  font-family: "Open Sans", cursive;
-  /* color: #daa520d0; */
-}
-
-h5 {
-  color: #daa520d0;
+p {
+  font-family: "Futura", sans-serif;
 }
 
 .tg {
-  color: #daa520d0;
+  color: #ffffff;
 }
 
 .overlay {
-  background: rgba(0, 0, 0, 0.5); /* Warna hitam transparan */
+  background: rgba(0, 0, 0, 0.692); /* Warna hitam transparan */
   z-index: 1; /* Posisi di bawah teks */
 }
 
@@ -37,7 +30,7 @@ h5 {
 }
 
 .bg-berem {
-  background-color: #83610a;
+  background-color: #ffffff;
 }
 
 .text-berem {
@@ -60,6 +53,14 @@ h5 {
   background-color: #86613c;
 }
 
+.fs-100 {
+  font-size: 100px;
+}
+
+.fs-80 {
+  font-size: 80px;
+}
+
 .fs-60 {
   font-size: 60px;
 }
@@ -70,6 +71,14 @@ h5 {
 
 .fs-40 {
   font-size: 40px;
+}
+
+.fs-25 {
+  font-size: 25px;
+}
+
+.fs-20 {
+  font-size: 20px;
 }
 
 .scale {
@@ -88,7 +97,7 @@ h5 {
 
 @media (max-width: 640px) {
   h1 {
-    font-size: 1.5rem !important;
+    font-size: 3rem !important;
   }
   #front-image {
     display: none;
@@ -96,8 +105,33 @@ h5 {
   #front-text {
     padding-top: 40%;
     height: 100vh;
-    background-image: url(../img/img3-foreground.jpg);
+    background-image: url(../img/img2c.jpeg);
     background-size: cover;
+  }
+  .ayat p {
+    font-size: 0.9rem !important;
+  }
+
+  .countdown h2 {
+    font-size: 2rem !important;
+  }
+
+  .bg-countdown h1 {
+    font-size: 1.8rem !important;
+  }
+
+  .bg-countdown h3 {
+    font-size: 1rem !important;
+  }
+
+  .bg-gift {
+    margin: 0;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+  }
+
+  .bg-thanks h2 {
+    font-size: 3rem !important;
   }
 }
 
@@ -109,4 +143,136 @@ h5 {
 
 bg {
   color: #83610a6e;
+}
+
+/* Slideshow Container */
+.slideshow-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Slide Backgrounds */
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  animation: zoom 6s infinite alternate;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+/* Animasi Zoom In dan Zoom Out */
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+/* Aktifkan Slide */
+.slide.active {
+  opacity: 1;
+}
+
+.img-ayat {
+  border-radius: 20px;
+}
+
+.divider {
+  width: 500px;
+  height: auto;
+  display: block;
+  margin: 0 auto; /* Tengah secara horizontal */
+}
+
+/* Slideshow Container untuk Section Baru */
+.slideshow-container-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%; /* Menggunakan minimal tinggi 100% */
+  height: auto; /* Menyesuaikan dengan konten */
+  overflow: hidden;
+}
+
+/* Slide Background untuk Section Baru */
+.slide-2 {
+  position: absolute;
+  width: 100%;
+  min-height: 100%; /* Minimal tinggi 100% untuk memastikan responsif */
+  height: auto; /* Menyesuaikan dengan konten */
+  background-size: cover;
+  background-position: center;
+  animation: zoom 6s infinite alternate;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+/* Animasi Zoom */
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+/* Aktifkan Slide untuk Section Baru */
+.slide-2.active {
+  opacity: 1;
+}
+
+.bg-countdown {
+  background: rgba(0, 0, 0, 0.507);
+  border-radius: 20px;
+  display: flex;
+  align-items: stretch; /* Memastikan tinggi div mengikuti konten tertinggi */
+  overflow: hidden; /* Menghindari elemen yang keluar dari batas */
+  height: 100%;
+}
+
+.img-countdown1 {
+  width: 100%; /* Memenuhi lebar kolom kanan */
+  height: 100%; /* Memenuhi tinggi kolom kanan */
+  object-fit: cover; /* Memastikan gambar menyesuaikan ukuran tanpa merusak rasio */
+  border-radius: 20px;
+}
+
+.row.bg-countdown {
+  margin: 0; /* Hilangkan margin default */
+  flex-grow: 1;
+  padding: 0;
+}
+
+.col-countdown1 {
+  padding: 0; /* Hilangkan padding pada kolom kanan */
+  display: flex;
+  align-items: stretch; /* Tinggi gambar menyesuaikan */
+}
+
+.bg-gift {
+  margin: 0;
+  padding-left: 150px;
+  padding-right: 150px;
+  background: rgba(255, 255, 255, 0.507);
+  width: 100%;
+}
+
+.bg-thanks {
+  background: #1a1a1d;
+  margin-top: -10px;
+}
+
+.bg-thanks h1 {
+  margin: 0;
 }

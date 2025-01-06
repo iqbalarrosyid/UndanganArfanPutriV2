@@ -106,3 +106,55 @@ $(".blur").mouseleave(function () {
 //   const url = `https://wa.me/6283838617519?text=${encodeURIComponent(pesan)}`;
 //   window.open(url, "_blank");
 // });
+let slideIndex = 0;
+const slides = document.querySelectorAll(".slide");
+
+function showSlides() {
+  slides.forEach((slide, index) => {
+    slide.classList.remove("active");
+  });
+
+  slideIndex++;
+  if (slideIndex > slides.length) {
+    slideIndex = 1;
+  }
+
+  slides[slideIndex - 1].classList.add("active");
+  setTimeout(showSlides, 3000); // Ganti gambar setiap 4 detik
+}
+
+showSlides();
+
+let slideIndex2 = 0;
+const slides2 = document.querySelectorAll(".slide-2");
+
+function showSlides2() {
+  slides2.forEach((slide) => {
+    slide.classList.remove("active");
+  });
+
+  slideIndex2++;
+  if (slideIndex2 > slides2.length) {
+    slideIndex2 = 1;
+  }
+
+  slides2[slideIndex2 - 1].classList.add("active");
+  setTimeout(showSlides2, 3000); // Ganti gambar setiap 3 detik
+}
+
+showSlides2();
+
+// salin alamat
+document
+  .getElementById("copyAddressButton")
+  .addEventListener("click", function () {
+    var addressText = document.getElementById("address").innerText;
+    navigator.clipboard
+      .writeText(addressText)
+      .then(function () {
+        alert("Alamat telah disalin ke clipboard!");
+      })
+      .catch(function (err) {
+        alert("Gagal menyalin alamat: " + err);
+      });
+  });
