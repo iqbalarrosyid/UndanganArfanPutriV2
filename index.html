@@ -503,7 +503,7 @@
       <div class="container text-center my-5 px-5">
         <h2 class="font-dancing fs-45 mb-4">Ucapan dan Doa</h2>
         <!-- Form Input -->
-        <form id="commentForm" class="mb-4">
+        <form id="commentForm" class="mb-4" style="font-size: 1rem">
           <div class="mb-3">
             <input
               type="text"
@@ -511,6 +511,7 @@
               class="form-control form-control-lg"
               placeholder="Nama"
               required
+              style="font-size: 1rem"
             />
           </div>
           <div class="mb-3">
@@ -520,10 +521,16 @@
               placeholder="Komentar"
               rows="2"
               required
+              style="font-size: 1rem"
             ></textarea>
           </div>
           <div class="mb-3">
-            <select id="attendance" class="form-select form-select-lg" required>
+            <select
+              id="attendance"
+              class="form-select form-select-lg"
+              required
+              style="font-size: 1rem"
+            >
               <option value="" disabled selected>Pilih Kehadiran</option>
               <option value="hadir">Hadir</option>
               <option value="tidak_hadir">Tidak Hadir</option>
@@ -542,7 +549,7 @@
         <div
           id="commentsList"
           class="border rounded p-3 text-start"
-          style="max-height: 300px; overflow-y: scroll; font-size: 1.2rem"
+          style="max-height: 300px; overflow-y: scroll; font-size: 1rem"
         ></div>
 
         <!-- Statistik Kehadiran -->
