@@ -276,3 +276,27 @@ bg {
 .bg-thanks h1 {
   margin: 0;
 }
+
+.comment {
+  margin-bottom: 20px; /* Jarak antar komentar */
+}
+hr {
+  border: 1px solid #ccc; /* Garis pembatas */
+  margin: 10px 0; /* Jarak atas dan bawah garis */
+}
+.attendance-box {
+  display: inline-block;
+  padding: 5px;
+  border-radius: 10px;
+  color: white;
+  font-size: 1rem; /* Ukuran huruf di dalam kotak */
+  margin-right: 20px;
+  width: 120px; /* Lebar kotak */
+  text-align: center; /* Pusatkan teks di dalam kotak */
+}
+.present-box {
+  background-color: rgb(49, 145, 65); /* Warna hijau untuk hadir */
+}
+.absent-box {
+  background-color: red; /* Warna merah untuk tidak hadir */
+}

@@ -158,3 +158,93 @@ document
         alert("Gagal menyalin alamat: " + err);
       });
   });
+
+// firebase start
+// Inisialisasi Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyBM4-6rVSvGwwz70XR1iincHcGddYR7v40",
+  authDomain: "undanganarfanputri.firebaseapp.com",
+  databaseURL:
+    "https://undanganarfanputri-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "undanganarfanputri",
+  storageBucket: "undanganarfanputri.firebasestorage.app",
+  messagingSenderId: "315186232604",
+  appId: "1:315186232604:web:62e8e4bd6ac00a20470ed9",
+  measurementId: "G-S8GZMB963Q",
+};
+
+// Inisialisasi Firebase
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+
+// Ambil elemen DOM
+const commentForm = document.getElementById("commentForm");
+const commentsList = document.getElementById("commentsList");
+const totalComments = document.getElementById("totalComments");
+const totalPresentCount = document.getElementById("totalPresentCount");
+const totalAbsentCount = document.getElementById("totalAbsentCount");
+
+// Variabel untuk menghitung statistik
+let presentCount = 0;
+let absentCount = 0;
+
+// Tambahkan Komentar ke Database
+commentForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const comment = document.getElementById("comment").value.trim();
+  const attendance = document.getElementById("attendance").value;
+
+  // Validasi input
+  if (name.length < 3 || comment.length < 3) {
+    alert("Nama dan komentar minimal 3 karakter.");
+    return;
+  }
+
+  // Push data ke Firebase
+  database
+    .ref("comments")
+    .push({
+      name: name,
+      comment: comment,
+      attendance: attendance,
+      timestamp: Date.now(),
+    })
+    .then(() => console.log("Komentar berhasil disimpan"))
+    .catch((error) => console.error("Gagal menyimpan komentar:", error));
+
+  // Kosongkan input
+  document.getElementById("name").value = "";
+  document.getElementById("comment").value = "";
+  document.getElementById("attendance").value = ""; // Reset dropdown ke default
+});
+
+// Menampilkan Komentar secara Real-Time dan menghitung statistik
+database.ref("comments").on("child_added", (snapshot) => {
+  const data = snapshot.val();
+
+  // Tambahkan komentar ke tampilan dengan format baru
+  const commentElement = document.createElement("div");
+  commentElement.className = "comment mb-3"; // Tambahkan kelas untuk jarak antar komentar
+
+  // Format nama di atas komentar
+  commentElement.innerHTML = `<strong>${data.name}</strong><br />${data.comment}<hr />`; // Nama di baris pertama, komentar di baris kedua
+
+  commentsList.appendChild(commentElement);
+
+  // Update statistik kehadiran
+  if (data.attendance === "hadir") {
+    presentCount++;
+    totalPresentCount.textContent = presentCount; // Update jumlah hadir
+  } else if (data.attendance === "tidak_hadir") {
+    absentCount++;
+    totalAbsentCount.textContent = absentCount; // Update jumlah tidak hadir
+  }
+
+  // Update tampilan total komentar
+  totalComments.textContent = presentCount + absentCount; // Total komentar adalah jumlah hadir + tidak hadir
+
+  // Scroll ke komentar terbaru
+  commentsList.scrollTop = commentsList.scrollHeight;
+});
