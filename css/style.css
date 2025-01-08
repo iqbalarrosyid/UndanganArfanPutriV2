@@ -300,3 +300,48 @@ hr {
 .absent-box {
   background-color: red; /* Warna merah untuk tidak hadir */
 }
+
+.comment-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2; /* Batasi hingga 2 baris */
+}
+
+@media (min-width: 768px) {
+  .comment-text {
+    -webkit-line-clamp: unset; /* Hapus batasan di desktop */
+    display: block; /* Tampilkan semua teks di desktop */
+  }
+}
+
+.line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 210px;
+}
+
+.vertical-line {
+  width: 1px;
+  height: 205px;
+  background-color: rgb(255, 255, 255);
+}
+
+.bg-date {
+  background: rgba(0, 0, 0, 0.5); /* Overlay transparan */
+  border-radius: 8px; /* Sudut melengkung */
+  padding: 20px; /* Ruang di dalam div */
+  display: inline-block; /* Lebar menyesuaikan konten */
+  text-align: center; /* Teks berada di tengah */
+  overflow: hidden; /* Menghindari konten keluar dari batas */
+}
+
+/* Opsional: Tambahkan efek bayangan untuk mempercantik */
+.bg-date:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+button {
+  cursor: pointer; /* Efek kursor saat diarahkan ke tombol */
+}

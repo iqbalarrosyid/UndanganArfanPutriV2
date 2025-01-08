@@ -228,10 +228,34 @@ database.ref("comments").on("child_added", (snapshot) => {
   const commentElement = document.createElement("div");
   commentElement.className = "comment mb-3"; // Tambahkan kelas untuk jarak antar komentar
 
-  // Format nama di atas komentar
-  commentElement.innerHTML = `<strong>${data.name}</strong><br />${data.comment}<hr />`; // Nama di baris pertama, komentar di baris kedua
+  // Format waktu
+  const formattedDate = formatDate(data.timestamp);
+
+  // Buat elemen untuk menampilkan komentar
+  commentElement.innerHTML = `
+    <strong>${data.name}</strong><br />
+    <span class="comment-text">${data.comment}</span>
+    ${
+      data.comment.split(" ").length > 20
+        ? `<button class="btn btn-link read-more">Selengkapnya</button>`
+        : ""
+    }
+    <small style="float: right; font-size: 0.8rem; color: gray;">${formattedDate}</small>
+    <hr />
+  `; // Nama di baris pertama, komentar di baris kedua, tanggal di kanan bawah
 
   commentsList.appendChild(commentElement);
+
+  // Tambahkan event listener untuk tombol "Selengkapnya"
+  if (data.comment.split(" ").length > 20) {
+    const readMoreButton = commentElement.querySelector(".read-more");
+    readMoreButton.addEventListener("click", () => {
+      const fullCommentElement = document.createElement("div");
+      fullCommentElement.textContent = data.comment;
+      fullCommentElement.style.marginBottom = "10px"; // Jarak bawah
+      commentElement.replaceChild(fullCommentElement, readMoreButton); // Ganti tombol dengan teks penuh
+    });
+  }
 
   // Update statistik kehadiran
   if (data.attendance === "hadir") {
@@ -247,4 +271,58 @@ database.ref("comments").on("child_added", (snapshot) => {
 
   // Scroll ke komentar terbaru
   commentsList.scrollTop = commentsList.scrollHeight;
+});
+
+// format waktu
+function formatDate(timestamp) {
+  const now = new Date();
+  const commentDate = new Date(timestamp);
+  const diffInSeconds = Math.floor((now - commentDate) / 1000);
+
+  if (diffInSeconds < 60) {
+    return `${diffInSeconds} detik yang lalu`;
+  } else if (diffInSeconds < 3600) {
+    const minutes = Math.floor(diffInSeconds / 60);
+    return `${minutes} menit yang lalu`;
+  } else if (diffInSeconds < 86400) {
+    const hours = Math.floor(diffInSeconds / 3600);
+    return `${hours} jam yang lalu`;
+  } else if (diffInSeconds < 172800) {
+    // kurang dari dua hari
+    return `Kemarin jam ${commentDate.toLocaleTimeString("id-ID", {
+      hour: "2-digit",
+      minute: "2-digit",
+    })}`;
+  } else {
+    return commentDate.toLocaleString("id-ID", {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  }
+}
+
+//Save the date
+document.getElementById("save-date-btn").addEventListener("click", function () {
+  // Detail acara
+  const title = "Pernikahan Arfan dan Putri";
+  const location =
+    "Masjid At Taqwa Jembayat Jl. Tegal - Cilacap, Jembayat, Kec. Margasari, Kabupaten Tegal, Jawa Tengah";
+  const description = "Jangan lupa hadir di acara pernikahan kami!";
+
+  // Format tanggal (YYYYMMDD) untuk Google Calendar
+  const startDate = "20250405T020000Z"; // 5 April 2025, pukul 09:00 WIB (02:00 UTC)
+  const endDate = "20250405T060000Z"; // 5 April 2025, pukul 13:00 WIB (06:00 UTC)
+
+  // URL Google Calendar
+  const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+    title
+  )}&dates=${startDate}/${endDate}&details=${encodeURIComponent(
+    description
+  )}&location=${encodeURIComponent(location)}&sf=true&output=xml`;
+
+  // Arahkan ke URL Google Calendar
+  window.open(googleCalendarUrl, "_blank");
 });
